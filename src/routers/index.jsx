@@ -62,7 +62,7 @@ const router = createBrowserRouter([
             fontWeight: "bold",
           },
         }).showToast();
-        return redirect("/login");
+        return redirect("/");
       }
       return null;
     },
