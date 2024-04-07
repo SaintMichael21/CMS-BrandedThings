@@ -13,7 +13,7 @@ export default function Navbar() {
           className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6"
         >
           <img
-            src="./image/IDEA_logo.svg"
+            src="../../image/IDEA_logo.svg"
             width="80"
             className="d-inline-block me-2"
             alt="IDEA"
