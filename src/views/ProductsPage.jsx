@@ -86,80 +86,82 @@ export default function ProductsPage({ url }) {
         </div>
         <div className="row">
           <div className="col-12 table-responsive">
-            <table className="table align-middle">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col" width="180px">
-                    Image
-                  </th>
-                  <th scope="col" width="250px">
-                    Description
-                  </th>
-                  <th scope="col">Stock</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Author</th>
-                  <th scope="col" width="50px"></th>
-                </tr>
-              </thead>
-              <tbody id="table-product">
-                {loading ? (
-                  <div className="mt-32 flex justify-center items-center">
-                    <img src={spinLoad} />
-                  </div>
-                ) : (
-                  products.map((product, index) => {
-                    return (
-                      <tr key={product.id}>
-                        <td scope="row">#{index + 1}</td>
-                        <td className="fw-bold">{product.name}</td>
-                        <td>
-                          <img src={product.imgUrl} className="img-fluid" />
-                        </td>
-                        <td>{product.description}</td>
-                        <td>{product.stock}</td>
-                        <td className="fw-bold">Rp. {product.price}</td>
-                        <td>{product.User.email}</td>
-                        <td>
-                          <span className="d-flex">
-                            <a
-                              className="ms-3"
-                              onClick={() => {
-                                deleteProduct(product.id);
-                              }}
-                            >
-                              <span
-                                role="button"
-                                className="icon material-symbols-outlined text-danger "
+            {loading ? (
+              <div className="mt-32 flex justify-center items-center">
+                <img src={spinLoad} />
+              </div>
+            ) : (
+              <>
+                <table className="table align-middle">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col" width="180px">
+                        Image
+                      </th>
+                      <th scope="col" width="250px">
+                        Description
+                      </th>
+                      <th scope="col">Stock</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Author</th>
+                      <th scope="col" width="50px"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="table-product">
+                    {products.map((product, index) => {
+                      return (
+                        <tr key={product.id}>
+                          <td scope="row">#{index + 1}</td>
+                          <td className="fw-bold">{product.name}</td>
+                          <td>
+                            <img src={product.imgUrl} className="img-fluid" />
+                          </td>
+                          <td>{product.description}</td>
+                          <td>{product.stock}</td>
+                          <td className="fw-bold">Rp. {product.price}</td>
+                          <td>{product.User.email}</td>
+                          <td>
+                            <span className="d-flex">
+                              <a
+                                className="ms-3"
+                                onClick={() => {
+                                  deleteProduct(product.id);
+                                }}
                               >
-                                delete
-                              </span>
-                            </a>
-                            <Link
-                              to={`/products/edit/${product.id}`}
-                              className="ms-3"
-                            >
-                              <span className="icon material-symbols-outlined text-danger">
-                                edit
-                              </span>
-                            </Link>
-                            <Link
-                              to={`/products/edit/image/${product.id}`}
-                              className="ms-3"
-                            >
-                              <span className="icon material-symbols-outlined text-danger">
-                                image
-                              </span>
-                            </Link>
-                          </span>
-                        </td>
-                      </tr>
-                    );
-                  })
-                )}
-              </tbody>
-            </table>
+                                <span
+                                  role="button"
+                                  className="icon material-symbols-outlined text-danger "
+                                >
+                                  delete
+                                </span>
+                              </a>
+                              <Link
+                                to={`/products/edit/${product.id}`}
+                                className="ms-3"
+                              >
+                                <span className="icon material-symbols-outlined text-danger">
+                                  edit
+                                </span>
+                              </Link>
+                              <Link
+                                to={`/products/edit/image/${product.id}`}
+                                className="ms-3"
+                              >
+                                <span className="icon material-symbols-outlined text-danger">
+                                  image
+                                </span>
+                              </Link>
+                            </span>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </>
+            )}
           </div>
         </div>
       </section>
